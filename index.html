@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Heart Protocol</title>
+    <title>For Pimchanok ❤️</title>
     <style>
         * {
             box-sizing: border-box;
@@ -147,13 +147,14 @@
         .tap-pop {
             position: absolute;
             color: #ff758c;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             font-weight: bold;
             pointer-events: none;
             user-select: none;
             z-index: 20;
             white-space: nowrap;
-            animation: popAndFade 1.5s ease-out forwards;
+            animation: popAndFade 1.6s ease-out forwards;
+            text-shadow: 0 0 8px rgba(255, 42, 109, 0.6);
         }
 
         @keyframes popAndFade {
@@ -165,38 +166,38 @@
 </head>
 <body>
 
-    <!-- แท็กเรียกไฟล์ song.mp3 -->
+    <!-- Direct URL MP3 ชัวร์ 100% บนทุกเบราว์เซอร์ -->
     <audio id="bgm" loop preload="auto">
-        <source src="song.mp3" type="audio/mpeg">
+        <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=lofi-study-112191.mp3" type="audio/mpeg">
     </audio>
 
     <div class="phone-frame" id="main-frame" onclick="handleTap(event)">
         <!-- ขั้นตอนที่ 1 -->
         <div id="step-1" class="card-box">
-            <div class="line"><span class="system">[system]</span> Initializing heart.PROTOCOL_v2.0 ...</div>
+            <div class="line"><span class="system">[system]</span> Initializing Pimchanok.PROTOCOL_v2.0 ...</div>
             <div class="line"><span class="system">[status]</span> <span class="status">READY</span></div>
-            <div class="subtext">> พบข้อความลับส่งถึงคุณ 1 ข้อความ</div>
+            <div class="subtext">> พบความรักความหวังดีส่งถึง "พิมพ์ชนก" 1 ข้อความ ❤️</div>
             <button class="btn-action" onclick="playMusic(); goToStep(2);">🔒 DECRYPT MESSAGE</button>
         </div>
 
         <!-- ขั้นตอนที่ 2 -->
         <div id="step-2" class="card-box hidden-card">
             <div class="line"><span class="system">[confirm]</span> CHECKING...</div>
-            <div class="subtext">แน่ใจนะว่าจะเปิดดูจริงเหรอ? 😳</div>
-            <button class="btn-action" onclick="playMusic(); goToStep(3);">แน่ใจสิ กดเลย! 👉</button>
+            <div class="subtext">พิมพ์ชนกแน่ใจนะว่าจะเปิดดูจริงเหรอ? 😳✨</div>
+            <button class="btn-action" onclick="playMusic(); goToStep(3);">แน่ใจสิ กดดูเลย! 👉</button>
         </div>
 
         <!-- ขั้นตอนที่ 3 -->
         <div id="step-3" class="card-box hidden-card">
             <div class="line"><span class="system">[warning]</span> SHY_LEVEL_MAX</div>
-            <div class="subtext">แต่เค้าเปิดให้ดูแล้วเค้าเขินนะ... 🫣❤️</div>
+            <div class="subtext">เปิดให้ดูแล้วเค้าเขินนะ... ตั้งใจทำมาให้พิมพ์ชนกคนเดียวเลยนะ 🫣❤️</div>
             <button class="btn-action" onclick="playMusic(); goToStep(4);">โอ๋ๆ ไม่ต้องเขิน ไปต่อเร็ว 🥺</button>
         </div>
 
         <!-- ขั้นตอนที่ 4 -->
         <div id="step-4" class="card-box hidden-card">
             <div class="line"><span class="system">[final_notice]</span> <span class="warn">WARNING</span></div>
-            <div class="subtext">เตือนแล้วนะ!! ห้ามยิ้มคนเดียวนะ... ⚠️🥰</div>
+            <div class="subtext">เตือนแล้วนะ!! ห้ามยิ้มคนเดียวนะครับคุณพิมพ์ชนก... ⚠️🥰</div>
             <button class="btn-action" onclick="startHeartAnimation()">พร้อมแล้ว ดูเลย! ❤️</button>
         </div>
 
@@ -207,7 +208,13 @@
         function playMusic() {
             const audio = document.getElementById('bgm');
             if (audio) {
-                audio.play().catch(e => console.log("Audio Play Error:", e));
+                // ปลดล็อกการเล่นเสียงบน Safari / Chrome บนมือถือ
+                const playPromise = audio.play();
+                if (playPromise !== undefined) {
+                    playPromise.catch(e => {
+                        console.log("Audio Play Deferred", e);
+                    });
+                }
             }
         }
 
@@ -321,9 +328,15 @@
         }
 
         const lovePhrases = [
-            'รักเธอนะ ❤️', 'คิดถึงจัง 🥺', 'น่ารักที่สุด 🥰', 
-            'อยู่ด้วยกันนานๆ นะ ✨', 'ยิ้มเยอะๆ น้า 😊', 'คนเก่งของเค้า 💖', 
-            'i love you 3000 💕'
+            'รักพิมพ์ชนกที่สุดเลย ❤️', 
+            'คิดถึงพิมพ์ชนกจัง 🥺', 
+            'พิมพ์ชนกน่ารักที่สุด 🥰', 
+            'อยู่ด้วยกันนานๆ นะ ✨', 
+            'ยิ้มเยอะๆ น้าคนดี 😊', 
+            'พิมพ์ชนกคือคนเก่งของเค้า 💖', 
+            'รักพิมพ์ชนก 3000 💕',
+            'แฟนใครน้า น่ารักจัง 🥰',
+            'ตั้งใจทำมาให้พิมพ์ชนกเลยนะ 🌸'
         ];
 
         function handleTap(e) {
@@ -344,7 +357,7 @@
 
             frame.appendChild(pop);
 
-            setTimeout(() => { pop.remove(); }, 1500);
+            setTimeout(() => { pop.remove(); }, 1600);
         }
     </script>
 </body>
