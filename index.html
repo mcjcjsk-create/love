@@ -1,202 +1,563 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Photo Popup with Password</title>
-
-  <style>
-    body, html {
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      height: 100%;
-      font-family: "Poppins", Arial, sans-serif;
-      overflow: hidden;
-    }
-
-    body {
-      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-      text-align: center;
-      color: #333;
-      animation: fadeIn 1s ease;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-    }
-
-    h1 {
-      color: white;
-      font-size: 5vw; /* ขนาดปรับตามหน้าจอ */
-      text-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
-      margin-bottom: 2vh;
-      font-weight: 600;
-    }
-
-    .photo {
-      width: 90vw;  /* ขนาดเต็มหน้าจอเกือบเต็ม */
-      max-width: 600px; 
-      height: 60vh;
-      cursor: pointer;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .photo img {
-      width: 100%;
-      height: 100%;
-      border-radius: 20px;
-      object-fit: cover;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    }
-
-    .photo:hover {
-      transform: scale(1.03);
-    }
-
-    .message-popup {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(0, 0, 0, 0.6);
-      backdrop-filter: blur(5px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 1000;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s ease;
-    }
-
-    .message-popup.active {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    .message-box {
-      background: rgba(255, 255, 255, 0.2);
-      padding: 8vw; /* ปรับตามหน้าจอมือถือ */
-      border-radius: 20px;
-      backdrop-filter: blur(10px);
-      text-align: center;
-      color: white;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-      animation: popupShow 0.35s ease;
-      max-width: 90vw;
-    }
-
-    .message-box h2 {
-      font-size: 5vw;
-      margin-bottom: 4vw;
-      font-weight: 600;
-    }
-
-    .password-input input {
-      padding: 3vw;
-      font-size: 4vw;
-      border-radius: 10px;
-      border: none;
-      width: 50%;
-      max-width: 200px;
-      outline: none;
-      margin-right: 3vw;
-    }
-
-    .password-input button {
-      padding: 3vw;
-      font-size: 4vw;
-      border-radius: 10px;
-      background-color: #ff6b81;
-      color: white;
-      border: none;
-      cursor: pointer;
-      transition: 0.2s;
-    }
-
-    .password-input button:hover {
-      background-color: #ff4757;
-      transform: scale(1.05);
-    }
-
-    #player {
-      width: 0;
-      height: 0;
-      opacity: 0;
-      pointer-events: none;
-      position: absolute;
-    }
-
-    @keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
-    @keyframes popupShow { from {transform:scale(0.8);opacity:0;} to {transform:scale(1);opacity:1;} }
-  </style>
-</head>
-
-<body>
-  <h1>Click on this photo</h1>
-
-  <div class="photo" onclick="showPasswordPopup()">
-    <img src="https://t3.ftcdn.net/jpg/01/10/26/34/360_F_110263419_6d9oWmooHp0tLqQrG6ypqQk7KRqxIkSE.jpg" alt="Photo" />
-  </div>
-
-  <div class="message-popup" id="messagePopup">
-    <div class="message-box">
-      <h2>Enter your birthday date</h2>
-
-      <div class="password-input">
-        <input id="passwordInput" type="password" placeholder="Enter password" />
-        <button onclick="checkPassword()">Submit</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Hidden YouTube Player -->
-  <div id="player"></div>
-
-  <script>
-    function showPasswordPopup() {
-      document.getElementById("messagePopup").classList.add("active");
-    }
-
-    function checkPassword() {
-      const password = document.getElementById("passwordInput").value;
-
-      if (password === "08122568") {
-        window.location.href = "http://127.0.0.1:5500/happy%20birhtday2.html";
-      } else {
-        alert("Try again");
-      }
-    }
-  </script>
-
-  <!-- YouTube API -->
-  <script src="https://www.youtube.com/iframe_api"></script>
-
-  <script>
-    var videoId = "lqWP-nJF0kA";
-
-    function onYouTubeIframeAPIReady() {
-      new YT.Player('player', {
-        videoId: videoId,
-        playerVars: {
-          autoplay: 1,
-          controls: 0,
-          mute: 0,
-          loop: 1,
-          playlist: videoId
-        },
-        events: {
-          onReady: function (event) {
-            event.target.unMute();
-            event.target.setVolume(100);
-            event.target.playVideo();
-          }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Pimchanok ❤️</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
         }
-      });
-    }
-  </script>
 
+        body {
+            background-color: #0d0208;
+            color: #ff2a6d;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            min-height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Screen Shake Effect (Slow Motion Smooth Shake) */
+        body.shake {
+            animation: screenShake 1.2s cubic-bezier(.36,.07,.19,.97) both;
+        }
+
+        @keyframes screenShake {
+            10%, 90% { transform: translate3d(-3px, -4px, 0); }
+            20%, 80% { transform: translate3d(5px, 4px, 0); }
+            30%, 50%, 70% { transform: translate3d(-9px, -7px, 0); }
+            40%, 60% { transform: translate3d(9px, 7px, 0); }
+        }
+
+        .card-box {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            width: 90%;
+            max-width: 520px;
+            background: rgba(20, 5, 12, 0.92);
+            padding: 30px 25px;
+            border-radius: 16px;
+            box-shadow: 0 0 35px rgba(255, 42, 109, 0.35);
+            border: 1px solid rgba(255, 42, 109, 0.35);
+            font-family: 'Courier New', Courier, monospace;
+            z-index: 10;
+            transition: opacity 0.5s ease, transform 0.5s ease, visibility 0.5s ease;
+            position: absolute;
+            will-change: transform, opacity;
+        }
+
+        .line { font-size: 1.05rem; letter-spacing: 0.5px; line-height: 1.4; }
+        .system { color: #ff2a6d; }
+        .status { color: #00ff66; font-weight: bold; }
+        .warn { color: #ffb703; font-weight: bold; }
+        .subtext { color: #d0c0cc; font-size: 1.1rem; margin-top: 5px; line-height: 1.5; }
+
+        .btn-action {
+            margin-top: 15px;
+            padding: 14px 26px;
+            background: transparent;
+            border: 1px solid #ff2a6d;
+            color: #ff2a6d;
+            font-family: inherit;
+            font-size: 1.05rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+            width: fit-content;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-radius: 8px;
+        }
+
+        .btn-action:hover {
+            background: #ff2a6d;
+            color: #000;
+            box-shadow: 0 0 15px #ff2a6d;
+        }
+
+        .btn-action:active {
+            transform: scale(0.96);
+        }
+
+        .hidden-card {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transform: scale(0.9);
+        }
+
+        #heart-container {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            contain: strict;
+        }
+
+        .text-node {
+            position: absolute;
+            font-weight: 800;
+            white-space: nowrap;
+            user-select: none;
+            opacity: 0;
+            font-family: 'Courier New', Courier, monospace;
+            will-change: transform, opacity;
+            animation: flyIn 5s cubic-bezier(0.16, 1, 0.3, 1) forwards, pulse 3.5s infinite ease-in-out 5s;
+        }
+
+        @keyframes flyIn {
+            0% {
+                transform: translate3d(-50%, 105vh, 0) scale(0.2);
+                opacity: 0;
+            }
+            40% { opacity: 0.6; }
+            100% {
+                transform: translate3d(-50%, -50%, 0) scale(1);
+                opacity: var(--final-opacity);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: translate3d(-50%, -50%, 0) scale(1); }
+            50% { transform: translate3d(-50%, -50%, 0) scale(1.06); }
+        }
+
+        /* ปรับอนิเมชันระเบิดเป็น Slow-motion สโลว์ยาวๆ 5 วินาที */
+        .text-node.explode {
+            animation: explodeOut 5s cubic-bezier(0.08, 0.6, 0.2, 1) forwards !important;
+        }
+
+        @keyframes explodeOut {
+            0% {
+                transform: translate3d(-50%, -50%, 0) scale(1);
+                opacity: 1;
+                filter: drop-shadow(0 0 12px #ff2a6d);
+            }
+            25% {
+                opacity: 0.95;
+                filter: drop-shadow(0 0 30px #ff2a6d);
+            }
+            100% {
+                transform: translate3d(var(--boom-x), var(--boom-y), 0) scale(2.8) rotate(var(--boom-rot));
+                opacity: 0;
+                filter: drop-shadow(0 0 0px transparent);
+            }
+        }
+
+        /* Shockwave Flash Effect ช้าลงเป็น 2.2 วินาที */
+        #shockwave {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255,255,255,0.9) 0%, rgba(255,42,109,0.75) 40%, rgba(255,42,109,0) 70%);
+            transform: translate(-50%, -50%) scale(0);
+            pointer-events: none;
+            z-index: 25;
+            opacity: 0;
+        }
+
+        #shockwave.boom {
+            animation: shockwaveExpand 2.2s cubic-bezier(0.1, 0.7, 0.2, 1) forwards;
+        }
+
+        @keyframes shockwaveExpand {
+            0% {
+                transform: translate(-50%, -50%) scale(0);
+                opacity: 1;
+            }
+            40% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(160);
+                opacity: 0;
+            }
+        }
+
+        /* Sparkle Particles กระจายแบบสโลว์ 3 วินาที */
+        .sparkle-particle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            pointer-events: none;
+            z-index: 26;
+            border-radius: 50%;
+            will-change: transform, opacity;
+            animation: particleFly 3s cubic-bezier(0.1, 0.7, 0.2, 1) forwards;
+        }
+
+        @keyframes particleFly {
+            0% {
+                transform: translate3d(-50%, -50%, 0) scale(1.2);
+                opacity: 1;
+            }
+            80% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translate3d(var(--px), var(--py), 0) scale(0);
+                opacity: 0;
+            }
+        }
+
+        /* ข้อความเฉลยตอนจบ ค่อยๆ เปล่งแสงซึ้งๆ ช้าๆ */
+        #final-message {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.6);
+            opacity: 0;
+            text-align: center;
+            z-index: 30;
+            width: 90%;
+            pointer-events: none;
+            transition: all 2.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        #final-message.show {
+            display: block;
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+        }
+
+        .big-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: #ff2a6d;
+            text-shadow: 0 0 20px #ff2a6d, 0 0 40px #ff2a6d, 0 0 80px #ff2a6d;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+        }
+
+        .big-subtitle {
+            font-size: 1.8rem;
+            color: #ffffff;
+            text-shadow: 0 0 10px #ff758c, 0 0 20px #ff758c;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .big-title { font-size: 2.2rem; }
+            .big-subtitle { font-size: 1.2rem; }
+        }
+
+        .bg-heart {
+            position: absolute;
+            color: #ff2a6d;
+            user-select: none;
+            pointer-events: none;
+            will-change: transform, opacity;
+            animation: floatUp 6s linear forwards;
+            z-index: 1;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translate3d(0, 0, 0) scale(0.5); opacity: 0.8; }
+            100% { transform: translate3d(0, -100vh, 0) scale(1.2); opacity: 0; }
+        }
+
+        .tap-pop {
+            position: absolute;
+            color: #ff758c;
+            font-size: 1.15rem;
+            font-weight: bold;
+            pointer-events: none;
+            user-select: none;
+            z-index: 20;
+            white-space: nowrap;
+            will-change: transform, opacity;
+            animation: popAndFade 1.6s ease-out forwards;
+            text-shadow: 0 0 12px rgba(255, 42, 109, 0.7);
+        }
+
+        @keyframes popAndFade {
+            0% { opacity: 0; transform: translate3d(-50%, -50%, 0) scale(0.5); }
+            20% { opacity: 1; transform: translate3d(-50%, -50%, 0) scale(1.15); }
+            100% { opacity: 0; transform: translate3d(-50%, -80px, 0) scale(1); }
+        }
+    </style>
+</head>
+<body>
+
+    <div style="width: 100vw; height: 100vh; position: relative; display: flex; justify-content: center; align-items: center;" id="main-frame" onclick="handleTap(event)">
+        <!-- ขั้นตอนที่ 1 -->
+        <div id="step-1" class="card-box">
+            <div class="line"><span class="system">[system]</span> Initializing Pimchanok.PROTOCOL_v2.0 ...</div>
+            <div class="line"><span class="system">[status]</span> <span class="status">READY</span></div>
+            <div class="subtext">> พบความรักความหวังดีส่งถึง "พิมพ์ชนก" 1 ข้อความ ❤️</div>
+            <button class="btn-action" onclick="goToStep(2)">🔒 DECRYPT MESSAGE</button>
+        </div>
+
+        <!-- ขั้นตอนที่ 2 -->
+        <div id="step-2" class="card-box hidden-card">
+            <div class="line"><span class="system">[confirm]</span> CHECKING...</div>
+            <div class="subtext">พิมพ์ชนกแน่ใจนะว่าจะเปิดดูจริงเหรอ? 😳✨</div>
+            <button class="btn-action" onclick="goToStep(3)">แน่ใจสิ กดดูเลย! 👉</button>
+        </div>
+
+        <!-- ขั้นตอนที่ 3 -->
+        <div id="step-3" class="card-box hidden-card">
+            <div class="line"><span class="system">[warning]</span> SHY_LEVEL_MAX</div>
+            <div class="subtext">เปิดให้ดูแล้วเค้าเขินนะ... ตั้งใจทำมาให้พิมพ์ชนกคนเดียวเลยนะ 🫣❤️</div>
+            <button class="btn-action" onclick="goToStep(4)">โอ๋ๆ ไม่ต้องเขิน ไปต่อเร็ว 🥺</button>
+        </div>
+
+        <!-- ขั้นตอนที่ 4 -->
+        <div id="step-4" class="card-box hidden-card">
+            <div class="line"><span class="system">[final_notice]</span> <span class="warn">WARNING</span></div>
+            <div class="subtext">เตือนแล้วนะ!! ห้ามยิ้มคนเดียวนะครับคุณพิมพ์ชนก... ⚠️🥰</div>
+            <button class="btn-action" onclick="startHeartAnimation()">พร้อมแล้ว ดูเลย! ❤️</button>
+        </div>
+
+        <div id="heart-container"></div>
+        <div id="shockwave"></div>
+
+        <!-- ข้อความเฉลยตอนระเบิด -->
+        <div id="final-message">
+            <div class="big-title">รักพิมพ์ชนกที่สุดเลย ❤️</div>
+            <div class="big-subtitle">ขอบคุณที่เข้ามาเป็นเรื่องน่ารักในทุกๆ วันนะ ✨</div>
+        </div>
+    </div>
+
+    <script>
+        let isAnimationStarted = false;
+
+        function goToStep(nextStepNum) {
+            const currentCard = document.querySelector('.card-box:not(.hidden-card)');
+            if (currentCard) {
+                currentCard.style.opacity = '0';
+                currentCard.style.transform = 'scale(0.9)';
+                setTimeout(() => {
+                    currentCard.classList.add('hidden-card');
+                    
+                    const nextCard = document.getElementById(`step-${nextStepNum}`);
+                    if (nextCard) {
+                        nextCard.classList.remove('hidden-card');
+                        requestAnimationFrame(() => {
+                            nextCard.style.opacity = '1';
+                            nextCard.style.transform = 'scale(1)';
+                        });
+                    }
+                }, 300);
+            }
+        }
+
+        function startHeartAnimation() {
+            isAnimationStarted = true;
+            const lastCard = document.getElementById('step-4');
+            lastCard.style.opacity = '0';
+            lastCard.style.transform = 'scale(0.9)';
+            setTimeout(() => {
+                lastCard.style.visibility = 'hidden';
+            }, 350);
+
+            const container = document.getElementById('heart-container');
+            container.style.display = 'block';
+
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+            const scale = Math.min(width, height) / 27;
+
+            let delayCounter = 0;
+            const fragment = document.createDocumentFragment();
+
+            for (let t = 0; t < Math.PI * 2; t += 0.05) {
+                const x = 16 * Math.pow(Math.sin(t), 3);
+                const y = -(13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t));
+
+                const targetX = (width / 2) + (x * scale);
+                const targetY = (height / 2) + (y * scale);
+
+                createHeartText(fragment, targetX, targetY, delayCounter, true);
+                delayCounter += 0.045;
+            }
+
+            for (let i = 0; i < 110; i++) {
+                const t = Math.random() * Math.PI * 2;
+                const r = Math.sqrt(Math.random()) * 0.92;
+                
+                const x = r * (16 * Math.pow(Math.sin(t), 3));
+                const y = r * (-(13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t)));
+
+                const targetX = (width / 2) + (x * scale);
+                const targetY = (height / 2) + (y * scale);
+
+                createHeartText(fragment, targetX, targetY, delayCounter, false);
+                delayCounter += 0.03;
+            }
+
+            container.appendChild(fragment);
+            scheduleFloatingHeart();
+
+            const totalFlyTime = (delayCounter + 5) * 1000;
+            const holdTime = 5500;
+
+            setTimeout(() => {
+                triggerExplosion();
+            }, totalFlyTime + holdTime);
+        }
+
+        function createHeartText(fragment, targetX, targetY, delay, isOuter) {
+            const span = document.createElement('span');
+            span.className = 'text-node';
+            span.innerText = 'i love you';
+            
+            span.style.left = `${targetX}px`;
+            span.style.top = `${targetY}px`;
+
+            const fontSize = isOuter ? (Math.random() * 4 + 14) : (Math.random() * 5 + 11);
+            const opacity = isOuter ? (Math.random() * 0.35 + 0.65) : (Math.random() * 0.4 + 0.3);
+            
+            span.style.fontSize = `${fontSize}px`;
+            span.style.color = `rgba(255, 42, 109, ${opacity})`;
+            span.style.setProperty('--final-opacity', opacity);
+            
+            span.style.animationDelay = `${delay}s, ${delay + 5}s`;
+
+            const angle = Math.random() * Math.PI * 2;
+            const dist = Math.random() * 550 + 300;
+            const boomX = `${Math.cos(angle) * dist}px`;
+            const boomY = `${Math.sin(angle) * dist}px`;
+            const boomRot = `${(Math.random() - 0.5) * 360}deg`;
+
+            span.style.setProperty('--boom-x', boomX);
+            span.style.setProperty('--boom-y', boomY);
+            span.style.setProperty('--boom-rot', boomRot);
+
+            fragment.appendChild(span);
+        }
+
+        function triggerExplosion() {
+            // 1. สั่นหน้าจอแบบนุ่มๆ (Screen Shake Effect)
+            document.body.classList.add('shake');
+            setTimeout(() => { document.body.classList.remove('shake'); }, 1200);
+
+            // 2. เปล่งคลื่นวงกลมระเบิดสโลว์โมชัน (Shockwave Flash)
+            const shockwave = document.getElementById('shockwave');
+            shockwave.classList.add('boom');
+
+            // 3. ปล่อยสะเก็ดประกายไฟพุ่งกระจายแบบสโลว์
+            createBurstParticles();
+
+            // 4. สั่งตัวอักษรระเบิดลอยสลายช้าๆ 5 วินาที
+            const nodes = document.querySelectorAll('.text-node');
+            nodes.forEach(node => {
+                node.classList.add('explode');
+            });
+
+            // 5. ปรากฏข้อความรักคุณที่สุดเลย ค่อยๆ เฟดขึ้นมาอย่างซึ้งๆ
+            setTimeout(() => {
+                const finalMsg = document.getElementById('final-message');
+                finalMsg.classList.add('show');
+            }, 1800);
+        }
+
+        function createBurstParticles() {
+            const frame = document.getElementById('main-frame');
+            const fragment = document.createDocumentFragment();
+            const colors = ['#ffffff', '#ff2a6d', '#ff758c', '#ffb703', '#00ff66'];
+
+            for (let i = 0; i < 65; i++) {
+                const p = document.createElement('div');
+                p.className = 'sparkle-particle';
+                
+                const size = Math.random() * 8 + 4;
+                p.style.width = `${size}px`;
+                p.style.height = `${size}px`;
+                p.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                p.style.boxShadow = `0 0 12px ${p.style.backgroundColor}`;
+
+                const angle = Math.random() * Math.PI * 2;
+                const dist = Math.random() * 650 + 180;
+                const px = `${Math.cos(angle) * dist}px`;
+                const py = `${Math.sin(angle) * dist}px`;
+
+                p.style.setProperty('--px', px);
+                p.style.setProperty('--py', py);
+
+                fragment.appendChild(p);
+            }
+
+            frame.appendChild(fragment);
+
+            setTimeout(() => {
+                const particles = frame.querySelectorAll('.sparkle-particle');
+                particles.forEach(p => p.remove());
+            }, 3200);
+        }
+
+        function scheduleFloatingHeart() {
+            if (!isAnimationStarted) return;
+
+            const frame = document.getElementById('main-frame');
+            const activeHearts = frame.querySelectorAll('.bg-heart').length;
+
+            if (activeHearts < 8) {
+                const heart = document.createElement('div');
+                heart.className = 'bg-heart';
+                
+                const icons = ['💖', '💕', '✨', '🌸', '❤️'];
+                heart.innerText = icons[Math.floor(Math.random() * icons.length)];
+                
+                heart.style.left = `${Math.random() * 90 + 5}%`;
+                heart.style.top = '100%';
+                heart.style.fontSize = `${Math.random() * 10 + 16}px`;
+                
+                frame.appendChild(heart);
+
+                setTimeout(() => { heart.remove(); }, 6000);
+            }
+
+            setTimeout(scheduleFloatingHeart, 1200);
+        }
+
+        const lovePhrases = [
+            'รักพิมพ์ชนกที่สุดเลย ❤️', 
+            'คิดถึงพิมพ์ชนกจัง 🥺', 
+            'พิมพ์ชนกน่ารักที่สุด 🥰', 
+            'อยู่ด้วยกันนานๆ นะ ✨', 
+            'ยิ้มเยอะๆ น้าคนดี 😊', 
+            'พิมพ์ชนกคือคนเก่งของเค้า 💖', 
+            'รักพิมพ์ชนก 3000 💕',
+            'แฟนใครน้า น่ารักจัง 🥰',
+            'ตั้งใจทำมาให้พิมพ์ชนกเลยนะ 🌸'
+        ];
+
+        function handleTap(e) {
+            if (!isAnimationStarted) return;
+
+            const frame = document.getElementById('main-frame');
+            
+            const x = e.clientX;
+            const y = e.clientY;
+
+            const pop = document.createElement('div');
+            pop.className = 'tap-pop';
+            pop.innerText = lovePhrases[Math.floor(Math.random() * lovePhrases.length)];
+            
+            pop.style.left = `${x}px`;
+            pop.style.top = `${y}px`;
+
+            frame.appendChild(pop);
+
+            setTimeout(() => { pop.remove(); }, 1600);
+        }
+    </script>
 </body>
 </html>
