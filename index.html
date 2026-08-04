@@ -1,202 +1,373 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Photo Popup with Password</title>
-
-  <style>
-    body, html {
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      height: 100%;
-      font-family: "Poppins", Arial, sans-serif;
-      overflow: hidden;
-    }
-
-    body {
-      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-      text-align: center;
-      color: #333;
-      animation: fadeIn 1s ease;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-    }
-
-    h1 {
-      color: white;
-      font-size: 5vw; /* ขนาดปรับตามหน้าจอ */
-      text-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
-      margin-bottom: 2vh;
-      font-weight: 600;
-    }
-
-    .photo {
-      width: 90vw;  /* ขนาดเต็มหน้าจอเกือบเต็ม */
-      max-width: 600px; 
-      height: 60vh;
-      cursor: pointer;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .photo img {
-      width: 100%;
-      height: 100%;
-      border-radius: 20px;
-      object-fit: cover;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    }
-
-    .photo:hover {
-      transform: scale(1.03);
-    }
-
-    .message-popup {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(0, 0, 0, 0.6);
-      backdrop-filter: blur(5px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 1000;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s ease;
-    }
-
-    .message-popup.active {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    .message-box {
-      background: rgba(255, 255, 255, 0.2);
-      padding: 8vw; /* ปรับตามหน้าจอมือถือ */
-      border-radius: 20px;
-      backdrop-filter: blur(10px);
-      text-align: center;
-      color: white;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-      animation: popupShow 0.35s ease;
-      max-width: 90vw;
-    }
-
-    .message-box h2 {
-      font-size: 5vw;
-      margin-bottom: 4vw;
-      font-weight: 600;
-    }
-
-    .password-input input {
-      padding: 3vw;
-      font-size: 4vw;
-      border-radius: 10px;
-      border: none;
-      width: 50%;
-      max-width: 200px;
-      outline: none;
-      margin-right: 3vw;
-    }
-
-    .password-input button {
-      padding: 3vw;
-      font-size: 4vw;
-      border-radius: 10px;
-      background-color: #ff6b81;
-      color: white;
-      border: none;
-      cursor: pointer;
-      transition: 0.2s;
-    }
-
-    .password-input button:hover {
-      background-color: #ff4757;
-      transform: scale(1.05);
-    }
-
-    #player {
-      width: 0;
-      height: 0;
-      opacity: 0;
-      pointer-events: none;
-      position: absolute;
-    }
-
-    @keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
-    @keyframes popupShow { from {transform:scale(0.8);opacity:0;} to {transform:scale(1);opacity:1;} }
-  </style>
-</head>
-
-<body>
-  <h1>Click on this photo</h1>
-
-  <div class="photo" onclick="showPasswordPopup()">
-    <img src="https://t3.ftcdn.net/jpg/01/10/26/34/360_F_110263419_6d9oWmooHp0tLqQrG6ypqQk7KRqxIkSE.jpg" alt="Photo" />
-  </div>
-
-  <div class="message-popup" id="messagePopup">
-    <div class="message-box">
-      <h2>Enter your birthday date</h2>
-
-      <div class="password-input">
-        <input id="passwordInput" type="password" placeholder="Enter password" />
-        <button onclick="checkPassword()">Submit</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Hidden YouTube Player -->
-  <div id="player"></div>
-
-  <script>
-    function showPasswordPopup() {
-      document.getElementById("messagePopup").classList.add("active");
-    }
-
-    function checkPassword() {
-      const password = document.getElementById("passwordInput").value;
-
-      if (password === "08122568") {
-        window.location.href = "http://127.0.0.1:5500/happy%20birhtday2.html";
-      } else {
-        alert("Try again");
-      }
-    }
-  </script>
-
-  <!-- YouTube API -->
-  <script src="https://www.youtube.com/iframe_api"></script>
-
-  <script>
-    var videoId = "lqWP-nJF0kA";
-
-    function onYouTubeIframeAPIReady() {
-      new YT.Player('player', {
-        videoId: videoId,
-        playerVars: {
-          autoplay: 1,
-          controls: 0,
-          mute: 0,
-          loop: 1,
-          playlist: videoId
-        },
-        events: {
-          onReady: function (event) {
-            event.target.unMute();
-            event.target.setVolume(100);
-            event.target.playVideo();
-          }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>For Pimchanok ❤️</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
         }
-      });
-    }
-  </script>
 
+        body {
+            background-color: #0d0208;
+            color: #ff2a6d;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .phone-frame {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            max-width: 420px;
+            max-height: 860px;
+            background: #0d0208;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 0 50px rgba(255, 42, 109, 0.25);
+        }
+
+        @media (min-width: 480px) {
+            .phone-frame {
+                height: 90vh;
+                border-radius: 40px;
+                border: 8px solid #220a16;
+            }
+        }
+
+        .card-box {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 88%;
+            background: rgba(20, 5, 12, 0.92);
+            padding: 25px 20px;
+            border-radius: 16px;
+            box-shadow: 0 0 30px rgba(255, 42, 109, 0.3);
+            border: 1px solid rgba(255, 42, 109, 0.35);
+            font-family: 'Courier New', Courier, monospace;
+            z-index: 10;
+            transition: opacity 0.35s ease, transform 0.35s ease, visibility 0.35s ease;
+            position: absolute;
+            will-change: transform, opacity;
+        }
+
+        .line { font-size: 0.95rem; letter-spacing: 0.5px; line-height: 1.4; }
+        .system { color: #ff2a6d; }
+        .status { color: #00ff66; font-weight: bold; }
+        .warn { color: #ffb703; font-weight: bold; }
+        .subtext { color: #d0c0cc; font-size: 1rem; margin-top: 5px; line-height: 1.5; }
+
+        .btn-action {
+            margin-top: 15px;
+            padding: 12px 22px;
+            background: transparent;
+            border: 1px solid #ff2a6d;
+            color: #ff2a6d;
+            font-family: inherit;
+            font-size: 0.95rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s ease, background 0.2s ease;
+            width: fit-content;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-radius: 8px;
+        }
+
+        .btn-action:active {
+            background: #ff2a6d;
+            color: #000;
+            transform: scale(0.96);
+        }
+
+        .hidden-card {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transform: scale(0.9);
+        }
+
+        #heart-container {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            contain: strict;
+        }
+
+        .text-node {
+            position: absolute;
+            font-weight: 800;
+            white-space: nowrap;
+            user-select: none;
+            opacity: 0;
+            font-family: 'Courier New', Courier, monospace;
+            will-change: transform, opacity;
+            /* ปรับให้ลอยขึ้นช้าลงเป็น 4.5 วินาที */
+            animation: flyIn 4.5s cubic-bezier(0.16, 1, 0.3, 1) forwards, pulse 3s infinite ease-in-out 4.5s;
+        }
+
+        @keyframes flyIn {
+            0% {
+                transform: translate3d(-50%, 105vh, 0) scale(0.2);
+                opacity: 0;
+            }
+            40% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translate3d(-50%, -50%, 0) scale(1);
+                opacity: var(--final-opacity);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: translate3d(-50%, -50%, 0) scale(1); }
+            50% { transform: translate3d(-50%, -50%, 0) scale(1.08); }
+        }
+
+        .bg-heart {
+            position: absolute;
+            color: #ff2a6d;
+            user-select: none;
+            pointer-events: none;
+            will-change: transform, opacity;
+            animation: floatUp 5s linear forwards;
+            z-index: 1;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translate3d(0, 0, 0) scale(0.5);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translate3d(0, -100vh, 0) scale(1.1);
+                opacity: 0;
+            }
+        }
+
+        .tap-pop {
+            position: absolute;
+            color: #ff758c;
+            font-size: 0.95rem;
+            font-weight: bold;
+            pointer-events: none;
+            user-select: none;
+            z-index: 20;
+            white-space: nowrap;
+            will-change: transform, opacity;
+            animation: popAndFade 1.4s ease-out forwards;
+            text-shadow: 0 0 8px rgba(255, 42, 109, 0.6);
+        }
+
+        @keyframes popAndFade {
+            0% { opacity: 0; transform: translate3d(-50%, -50%, 0) scale(0.5); }
+            20% { opacity: 1; transform: translate3d(-50%, -50%, 0) scale(1.1); }
+            100% { opacity: 0; transform: translate3d(-50%, -70px, 0) scale(1); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="phone-frame" id="main-frame" onclick="handleTap(event)">
+        <!-- ขั้นตอนที่ 1 -->
+        <div id="step-1" class="card-box">
+            <div class="line"><span class="system">[system]</span> Initializing Pimchanok.PROTOCOL_v2.0 ...</div>
+            <div class="line"><span class="system">[status]</span> <span class="status">READY</span></div>
+            <div class="subtext">> พบความรักความหวังดีส่งถึง "พิมพ์ชนก" 1 ข้อความ ❤️</div>
+            <button class="btn-action" onclick="goToStep(2)">🔒 DECRYPT MESSAGE</button>
+        </div>
+
+        <!-- ขั้นตอนที่ 2 -->
+        <div id="step-2" class="card-box hidden-card">
+            <div class="line"><span class="system">[confirm]</span> CHECKING...</div>
+            <div class="subtext">พิมพ์ชนกแน่ใจนะว่าจะเปิดดูจริงเหรอ? 😳✨</div>
+            <button class="btn-action" onclick="goToStep(3)">แน่ใจสิ กดดูเลย! 👉</button>
+        </div>
+
+        <!-- ขั้นตอนที่ 3 -->
+        <div id="step-3" class="card-box hidden-card">
+            <div class="line"><span class="system">[warning]</span> SHY_LEVEL_MAX</div>
+            <div class="subtext">เปิดให้ดูแล้วเค้าเขินนะ... ตั้งใจทำมาให้พิมพ์ชนกคนเดียวเลยนะ 🫣❤️</div>
+            <button class="btn-action" onclick="goToStep(4)">โอ๋ๆ ไม่ต้องเขิน ไปต่อเร็ว 🥺</button>
+        </div>
+
+        <!-- ขั้นตอนที่ 4 -->
+        <div id="step-4" class="card-box hidden-card">
+            <div class="line"><span class="system">[final_notice]</span> <span class="warn">WARNING</span></div>
+            <div class="subtext">เตือนแล้วนะ!! ห้ามยิ้มคนเดียวนะครับคุณพิมพ์ชนก... ⚠️🥰</div>
+            <button class="btn-action" onclick="startHeartAnimation()">พร้อมแล้ว ดูเลย! ❤️</button>
+        </div>
+
+        <div id="heart-container"></div>
+    </div>
+
+    <script>
+        let isAnimationStarted = false;
+
+        function goToStep(nextStepNum) {
+            const currentCard = document.querySelector('.card-box:not(.hidden-card)');
+            if (currentCard) {
+                currentCard.style.opacity = '0';
+                currentCard.style.transform = 'scale(0.9)';
+                setTimeout(() => {
+                    currentCard.classList.add('hidden-card');
+                    
+                    const nextCard = document.getElementById(`step-${nextStepNum}`);
+                    if (nextCard) {
+                        nextCard.classList.remove('hidden-card');
+                        requestAnimationFrame(() => {
+                            nextCard.style.opacity = '1';
+                            nextCard.style.transform = 'scale(1)';
+                        });
+                    }
+                }, 300);
+            }
+        }
+
+        function startHeartAnimation() {
+            isAnimationStarted = true;
+            const lastCard = document.getElementById('step-4');
+            lastCard.style.opacity = '0';
+            lastCard.style.transform = 'scale(0.9)';
+            setTimeout(() => {
+                lastCard.style.visibility = 'hidden';
+            }, 350);
+
+            const container = document.getElementById('heart-container');
+            container.style.display = 'block';
+
+            const frame = document.querySelector('.phone-frame');
+            const width = frame.clientWidth;
+            const height = frame.clientHeight;
+            const scale = Math.min(width, height) / 38;
+
+            let delayCounter = 0;
+            const fragment = document.createDocumentFragment();
+
+            // 1. สร้างขอบรูปหัวใจ (เพิ่ม delay ให้ลอยขึ้นทีละตัวช้าลง)
+            for (let t = 0; t < Math.PI * 2; t += 0.14) {
+                const x = 16 * Math.pow(Math.sin(t), 3);
+                const y = -(13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t));
+
+                const targetX = (width / 2) + (x * scale);
+                const targetY = (height / 2) + (y * scale) - 15;
+
+                createHeartText(fragment, targetX, targetY, delayCounter);
+                delayCounter += 0.08; // ยืดเวลาปล่อยตัวอักษรช้าลง
+            }
+
+            // 2. เติมในรูปหัวใจ
+            for (let i = 0; i < 45; i++) {
+                const t = Math.random() * Math.PI * 2;
+                const r = Math.sqrt(Math.random());
+                
+                const x = r * (16 * Math.pow(Math.sin(t), 3));
+                const y = r * (-(13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t)));
+
+                const targetX = (width / 2) + (x * scale);
+                const targetY = (height / 2) + (y * scale) - 15;
+
+                createHeartText(fragment, targetX, targetY, delayCounter);
+                delayCounter += 0.05;
+            }
+
+            container.appendChild(fragment);
+            scheduleFloatingHeart();
+        }
+
+        function createHeartText(fragment, targetX, targetY, delay) {
+            const span = document.createElement('span');
+            span.className = 'text-node';
+            span.innerText = 'i love you';
+            
+            span.style.left = `${targetX}px`;
+            span.style.top = `${targetY}px`;
+
+            const fontSize = Math.random() * 4 + 9;
+            const opacity = Math.random() * 0.5 + 0.5;
+            
+            span.style.fontSize = `${fontSize}px`;
+            span.style.color = `rgba(255, 42, 109, ${opacity})`;
+            span.style.setProperty('--final-opacity', opacity);
+            
+            span.style.animationDelay = `${delay}s, ${delay + 4.5}s`;
+
+            fragment.appendChild(span);
+        }
+
+        function scheduleFloatingHeart() {
+            if (!isAnimationStarted) return;
+            
+            const frame = document.getElementById('main-frame');
+            const activeHearts = frame.querySelectorAll('.bg-heart').length;
+
+            if (activeHearts < 6) {
+                const heart = document.createElement('div');
+                heart.className = 'bg-heart';
+                
+                const icons = ['💖', '💕', '✨', '🌸', '❤️'];
+                heart.innerText = icons[Math.floor(Math.random() * icons.length)];
+                
+                heart.style.left = `${Math.random() * 85 + 5}%`;
+                heart.style.top = '100%';
+                heart.style.fontSize = `${Math.random() * 8 + 12}px`;
+                
+                frame.appendChild(heart);
+
+                setTimeout(() => { heart.remove(); }, 5000);
+            }
+
+            setTimeout(scheduleFloatingHeart, 1200);
+        }
+
+        const lovePhrases = [
+            'รักพิมพ์ชนกที่สุดเลย ❤️', 
+            'คิดถึงพิมพ์ชนกจัง 🥺', 
+            'พิมพ์ชนกน่ารักที่สุด 🥰', 
+            'อยู่ด้วยกันนานๆ นะ ✨', 
+            'ยิ้มเยอะๆ น้าคนดี 😊', 
+            'พิมพ์ชนกคือคนเก่งของเค้า 💖', 
+            'รักพิมพ์ชนก 3000 💕',
+            'แฟนใครน้า น่ารักจัง 🥰',
+            'ตั้งใจทำมาให้พิมพ์ชนกเลยนะ 🌸'
+        ];
+
+        function handleTap(e) {
+            if (!isAnimationStarted) return;
+
+            const frame = document.getElementById('main-frame');
+            const rect = frame.getBoundingClientRect();
+            
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            const pop = document.createElement('div');
+            pop.className = 'tap-pop';
+            pop.innerText = lovePhrases[Math.floor(Math.random() * lovePhrases.length)];
+            
+            pop.style.left = `${x}px`;
+            pop.style.top = `${y}px`;
+
+            frame.appendChild(pop);
+
+            setTimeout(() => { pop.remove(); }, 1400);
+        }
+    </script>
 </body>
 </html>
