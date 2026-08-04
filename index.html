@@ -165,10 +165,9 @@
 </head>
 <body>
 
-    <!-- แท็กเล่นไฟล์เพลง KIMGUN - PRETTY GIRL Official MV.mp3 -->
+    <!-- แท็กเรียกไฟล์ song.mp3 -->
     <audio id="bgm" loop preload="auto">
-        <source src="KIMGUN%20-%20PRETTY%20GIRL%20Official%20MV.mp3" type="audio/mpeg">
-        <source src="KIMGUN - PRETTY GIRL Official MV.mp3" type="audio/mpeg">
+        <source src="song.mp3" type="audio/mpeg">
     </audio>
 
     <div class="phone-frame" id="main-frame" onclick="handleTap(event)">
@@ -190,7 +189,7 @@
         <!-- ขั้นตอนที่ 3 -->
         <div id="step-3" class="card-box hidden-card">
             <div class="line"><span class="system">[warning]</span> SHY_LEVEL_MAX</div>
-            <div class="subtext">แต่เปิดให้ดูแล้วเค้าเขินนะ... 🫣❤️</div>
+            <div class="subtext">แต่เค้าเปิดให้ดูแล้วเค้าเขินนะ... 🫣❤️</div>
             <button class="btn-action" onclick="playMusic(); goToStep(4);">โอ๋ๆ ไม่ต้องเขิน ไปต่อเร็ว 🥺</button>
         </div>
 
@@ -324,7 +323,7 @@
         const lovePhrases = [
             'รักเธอนะ ❤️', 'คิดถึงจัง 🥺', 'น่ารักที่สุด 🥰', 
             'อยู่ด้วยกันนานๆ นะ ✨', 'ยิ้มเยอะๆ น้า 😊', 'คนเก่งของเค้า 💖', 
-            'i love you 3000 💕','ฟังเพลงให้จบนะคะ'
+            'i love you 3000 💕'
         ];
 
         function handleTap(e) {
